@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/calculator")
-
 public class CalculatorController {
     private final CalculatorService calculatorService;
 
@@ -21,41 +20,30 @@ public class CalculatorController {
     }
 
     @GetMapping("/plus")
-    public String calculatedSum(@RequestParam(value = "num1", required = false) Integer num1,
-                                @RequestParam(value = "num2", required = false) Integer num2) {
-        if (num1 == null || num2 == null) {
-            return "<h1>Не введен параметр!<h1>";
-        }
+    public int calculatedSum(@RequestParam(value = "num1", required = false) Integer num1,
+                             @RequestParam(value = "num2", required = false) Integer num2) {
+
         return calculatorService.calculatedSum(num1, num2);
     }
 
     @GetMapping("/minus")
-    public String calculatedSubtraction(@RequestParam(value = "num1", required = false) Integer num1,
-                                        @RequestParam(value = "num2", required = false) Integer num2) {
-        if (num1 == null || num2 == null) {
-            return "<h1>Не введен параметр!<h1>";
-        }
+    public int calculatedSubtraction(@RequestParam(value = "num1", required = false) Integer num1,
+                                     @RequestParam(value = "num2", required = false) Integer num2) {
+
         return calculatorService.calculatedSubtraction(num1, num2);
     }
 
     @GetMapping("/multiply")
-    public String calculatedMultiplication(@RequestParam(value = "num1", required = false) Integer num1,
-                                           @RequestParam(value = "num2", required = false) Integer num2) {
-        if (num1 == null || num2 == null) {
-            return "<h1>Не введен параметр!<h1>";
-        }
+    public int calculatedMultiplication(@RequestParam(value = "num1", required = false) Integer num1,
+                                        @RequestParam(value = "num2", required = false) Integer num2) {
+
         return calculatorService.calculatedMultiplication(num1, num2);
     }
 
     @GetMapping("/divide")
-    public String calculatedDivision(@RequestParam(value = "num1", required = false) Integer num1,
-                                     @RequestParam(value = "num2", required = false) Integer num2) {
-        if (num1 == null || num2 == null) {
-            return "<h1>Не введен параметр!<h1>";
-        }
-        if (num2 == 0) {
-            return "<h1>Деление на 0 запрещено!<h1>";
-        }
+    public int calculatedDivision(@RequestParam(value = "num1", required = false) Integer num1,
+                                  @RequestParam(value = "num2", required = false) Integer num2) {
+
         return calculatorService.calculatedDivision(num1, num2);
     }
 }
